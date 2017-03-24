@@ -1,0 +1,25 @@
+/* LOGIN FORM */
+.title, .subtitle{
+   font-family: 'Kaushan Script', cursive;
+}
+
+body{
+   background-color: #4DDBFF;
+   padding:10px;
+}
+.login-container{
+   padding:10px;
+   background-color: white;
+   border-radius:10px;
+}
+.btn-primary{
+   color: black;
+   border-color: #4DDBFF;
+   background-color: white;
+   cursor: pointer;
+}
+.btn-primary:hover{
+   border-color: #4DDBFF;
+   background-color: #4DDBFF;
+   font-weight: bold;
+}
