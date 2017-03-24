@@ -1,6 +1,45 @@
+/* MEDIA QUERY */
+/* sm */
+@media (max-width: 767px) {
+  html {
+    font-size: 16px;
+  }
+  .title{
+      font-size: 3.2em;
+   }
+   .subtitle{
+      font-size: 1.7em;
+   }
+}
+/* md */
+@media (min-width: 768px) and (max-width: 991px) {
+   html {
+      font-size: 16px;
+   }
+   .title{
+      font-size: 3.5em;
+   }
+   .subtitle{
+      font-size: 2em;
+   }
+}
+/* lg, xl */
+@media (min-width: 992px) {
+  html {
+    font-size: 18px;
+  }
+  .title{
+      font-size: 3.5em;
+   }
+   .subtitle{
+      font-size: 2em;
+   }
+}
+
 /* LOGIN FORM */
 .title, .subtitle{
    font-family: 'Kaushan Script', cursive;
+   text-align: center;
 }
 
 body{
@@ -9,6 +48,11 @@ body{
 }
 .login-container{
    padding:10px;
+   background-color: white;
+   border-radius:10px;
+}
+.login-form{
+   padding: 20px;
    background-color: white;
    border-radius:10px;
 }

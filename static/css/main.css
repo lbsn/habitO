@@ -6,26 +6,6 @@ html{
    font-family: 'Muli', sans-serif;
 }
 
-/* FONTS MEDIA QUERY */
-/* sm */
-@media (max-width: 767px) {
-  html {
-    font-size: 16px;
-  }
-}
-/* md */
-@media (min-width: 768px) and (max-width: 991px) {
-  html {
-    font-size: 20px;
-  }
-}
-/* lg, xl */
-@media (min-width: 992px) {
-  html {
-    font-size: 24px;
-  }
-}
-
 /* BUTTONS */
 button, input{
    font-family: 'Muli', sans-serif;
