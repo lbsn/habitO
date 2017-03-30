@@ -1,0 +1,11 @@
+<nav class="navbar">
+   <div class="navbar-nav brand-col">
+      <span class="brand">Habit-O</span>
+   </div>
+   <div class="navbar-nav">
+      <button class="btn btn-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-o" aria-hidden="true"></i> {{user.username}}!</button>
+      <div class="dropdown-menu dropdown-menu-right">
+         <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+      </div>
+   </div><!-- End user info -->
+</nav>

@@ -1,0 +1,15 @@
+.habit-list h3{
+   margin-top: 1em;
+   margin-bottom: 1em;
+   font-family: 'Muli', sans-serif;
+   font-size: 1.5em;
+}
+.habit-list a{
+   font-size: 1.2em;
+   color: #000000;
+   margin-left: 0.7em;
+}
+.habit-list i{
+   cursor:pointer;
+   font-size: 1.3em;
+}

@@ -2,11 +2,88 @@
 @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
 @import url('https://fonts.googleapis.com/css?family=Muli');
 
+/* MEDIA QUERY */
+/* xs */
+@media (max-width: 575px) {
+  html {
+    font-size: 14px;
+  }
+  .navbar > .brand-col{
+      text-align: left;
+      padding: 0;
+   }
+}
+/* sm */
+@media (min-width: 576px) and (max-width: 767px) {
+  html {
+    font-size: 16px;
+  }
+}
+/* md */
+@media (min-width: 768px) and (max-width: 991px) {
+   html {
+      font-size: 18px;
+   }
+}
+/* lg, xl */
+@media (min-width: 992px) {
+  html {
+    font-size: 22px;
+  }  
+}
+
+/* GENERIC */
 html{
    font-family: 'Muli', sans-serif;
 }
+body{
+   background-color: #4DDBFF;
+   
+}
+
+/* HEADER */
+.navbar{
+   background-color: #FFFFFF;
+}
+.brand-col{
+   text-align: center;
+}
+.brand{
+   font-family: 'Kaushan Script', cursive;
+   font-size: 2em;
+}
+.header-container{
+   position:relative;
+}
+.user-info{
+   position: absolute;
+   top: 0px;
+   right: 0px;
+   height: 100%;
+   font-size: 1.2em;
+   padding: 0;
+}
+.user-info button{
+   display: inline-block;
+   vertical-align: sub;
+   color: #000000;
+   height: 100%;
+   padding: 0;
+}
+
 
 /* BUTTONS */
 button, input{
    font-family: 'Muli', sans-serif;
+}
+
+/* LINKS */
+a{
+   color: #003d99;
+}
+
+/* LISTS */
+ul{
+   list-style: none;
+   padding: 0;
 }

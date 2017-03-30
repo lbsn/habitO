@@ -1,18 +1,6 @@
 /* MEDIA QUERY */
-/* xs */
-@media (max-width: 575px) {
-  html {
-    font-size: 16px;
-  }
-  .title{
-      font-size: 3.2em;
-   }
-   .subtitle{
-      font-size: 1em;
-   }
-}
 /* sm */
-@media (min-width: 576px) and (max-width: 767px) {
+@media (max-width: 767px) {
   html {
     font-size: 16px;
   }
@@ -20,7 +8,10 @@
       font-size: 3.2em;
    }
    .subtitle{
-      font-size: 1em;
+      font-size: 1.7em;
+   }
+   .btnSeparator{
+      font-size: 1.2em;
    }
 }
 /* md */
@@ -32,7 +23,7 @@
       font-size: 3.5em;
    }
    .subtitle{
-      font-size: 1.2em;
+      font-size: 2em;
    }
 }
 /* lg, xl */
@@ -41,42 +32,36 @@
     font-size: 18px;
   }
   .title{
-      font-size: 4em;
+      font-size: 3.5em;
    }
    .subtitle{
-      font-size: 1.4em;
+      font-size: 2em;
    }
-}
-
-body{
-   padding:10px;
 }
 
 /* LOGIN FORM */
-.title{
+.title, .subtitle{
    font-family: 'Kaushan Script', cursive;
    text-align: center;
 }
-.subtitle{
-   font-family: 'Muli', sans-serif;
-}
-.subtitle span{
-   font-family: 'Kaushan Script', cursive;
-}
 
-.login-form{
-   padding: 20px;
-   background-color: #FFFFFF;
-   border-radius:10px;
+body{
+   background-color: #4DDBFF;
+   padding:10px;
+}
+.btnSeparator{
+   font-family: 'Kaushan Script', cursive;
+   display: block;
+   padding: 10px;
 }
 .btn-primary{
    color: black;
    border-color: #4DDBFF;
-   background-color: white;
+   background-color: #FFFFFF;
    cursor: pointer;
 }
 .btn-primary:hover{
-   border-color: #4DDBFF;
+   border-color: #FFFFFF;
    background-color: #4DDBFF;
    font-weight: bold;
 }

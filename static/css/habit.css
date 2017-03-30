@@ -1,0 +1,22 @@
+/* HABIT INFO */
+.card{
+   margin: 1em auto;
+}
+
+/* DAYS TABLE */
+.habit-table td{
+   text-align: center;
+   line-height: 1em;
+}
+.habit-table td.today{
+   background-color: #00b8e6;
+}
+.habit-table td.selectable:hover{
+   background-color: #FFFFFF;
+   cursor: pointer;
+}
+
+/* ACHIEVEMENTS */
+.achivements p{
+   margin-bottom: 0.3em;
+}

@@ -4,12 +4,15 @@ from habito_app.models import Habit
 from datetime import date
 import json
 
-class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput())
-
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password')
+class LoginForm(forms.ModelForm):
+	
+	class Meta:
+		model = User
+		fields = ('username', 'email', 'password')
+		widgets = {
+			'username': forms.TextInput(attrs={'placeholder':'Enter username','class':'form-control'}),
+			'password': forms.PasswordInput(attrs={'placeholder':'Enter password','class':'form-control'})
+		}
 
 
 class HabitForm(forms.ModelForm):

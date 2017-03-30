@@ -10,7 +10,8 @@
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="{% static 'bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' %}">
       <link rel="stylesheet" href="{% static 'css/main.css' %}"></link>
-      
+      <!-- Font Awesome -->
+      <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"></link>
       {% block css_block %}
       {% endblock %}
       
@@ -22,7 +23,13 @@
       <![endif]-->
    </head>
    <body>
+      {% block header_block %}
+      {% endblock %}
+      
       {% block body_block %}
+      {% endblock %}
+      
+      {% block footer_block %}
       {% endblock %}
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>

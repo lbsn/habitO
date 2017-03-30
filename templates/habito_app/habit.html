@@ -1,0 +1,121 @@
+{% extends "habito_app/base.html" %}
+{% load staticfiles %}
+{% load habit_o_extras %}
+
+{% block title_block %}
+   {{habit_title}}
+{% endblock %}
+
+{% block css_block %}
+   <link rel="stylesheet" href="{% static 'css/habit.css' %}"></link>
+{% endblock %}
+
+{% block header_block %}
+   {% include 'habito_app/header.html' %}
+{% endblock %}
+
+{% block body_block %}
+   <div class="container">
+      {% if habit %}
+         <!-- HABIT INFO -->
+         <div class="row">
+            <div class="col">
+               <div class="card">
+                  <div class="card-block">
+                     <h2 class="card-title" id="habitTitle" data-slug="{{habit_slug}}">{{habit_title}}</h2>
+               
+                     <!-- DESCRIPTION -->
+                     {% if habit_desc %}
+                        <p class="card-text created">
+                           {{ habit_created }}
+                        </p>
+                        <p class="card-text" id="habitDesc" data-slug="{{habit_slug}}">
+                           {{ habit_desc }}
+                        </p>
+                     {% else %}
+                        <strong>No description currently.</strong>
+                     {% endif %}
+                  </div>
+               </div><!-- End card -->
+            </div><!-- End col -->
+         </div><!-- End row -->
+         
+         <!-- DAYS TABLE -->
+         <div class= "row">
+            <div class="col">
+               <table class="habit-table table table-bordered" id="xTable" data-slug="{{habit_slug}}">
+                  <tbody>
+                     {% days_table as days_list %}
+                     {% for key, value in days_list %}
+                        <tr id="w_{{key}}">
+                           {% for k,v in value %}
+                              <td id="day_{{k}}"
+                                 {% if v != None %}
+                                    {% if k == today %}
+                                       class="day selectable today"
+                                    {% else %}
+                                       class="day selectable"
+                                    {% endif %}
+                                 {% else %}
+                                    class="day"
+                                 {% endif %}
+                              >
+                                 {% if v == 0 %}
+                                    <img src="{% static 'images/no_check.svg' %}"/>
+                                 {% elif v == 1 %}
+                                    <img src="{% static 'images/check.svg' %}"/>
+                                 {% else %}
+                                    &nbsp
+                                 {% endif %}
+                              </td>
+                           {% endfor %}
+                        </tr>
+                     {% endfor %}
+                  </tbody>
+               </table>
+            </div><!-- End col -->
+         </div><!-- End row -->
+         
+         <!-- ACHIEVEMENTS -->
+         <div class="row">
+            <div class="col">
+               <div class="card achivements">
+                  <div class="card-block">
+                     <h2 class="card-title">Achievements</h3>
+                     <p class="block-text">
+                        {% if achv.1 %}
+                           <i class="fa fa-check" aria-hidden="true"></i>
+                        {% else %}
+                           <i class="fa fa-times" aria-hidden="true"></i>
+                        {% endif %}
+                        5 days in a row
+                     </p>
+                     <p class="block-text">
+                        {% if achv.2 %}
+                           <i class="fa fa-check" aria-hidden="true"></i>
+                        {% else %}
+                           <i class="fa fa-times" aria-hidden="true"></i>
+                        {% endif %}
+                        10 days in a row
+                     </p>
+                     <p class="block-text">
+                        {% if achv.3 %}
+                           <i class="fa fa-check" aria-hidden="true"></i>
+                        {% else %}
+                           <i class="fa fa-times" aria-hidden="true"></i>
+                        {% endif %}
+                        15 days in a row
+                     </p>
+                  </div>
+               </div><!-- End card -->
+            </div><!-- End col -->
+         </div><!-- End row -->
+         
+      {% else %}
+         The specified habit does not exist!
+      {% endif %}
+
+   </div> <!-- End container -->
+   <script src="{% static 'js/habito-jquery.js' %}"></script>
+{% endblock %}
+

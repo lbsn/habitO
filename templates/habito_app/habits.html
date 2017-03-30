@@ -1,0 +1,36 @@
+{% extends "habito_app/base.html" %}
+{% load staticfiles %}
+
+{% block title_block %}
+   Habits
+{% endblock %}
+
+{% block css_block %}
+   <link rel="stylesheet" href="{% static 'css/habits.css' %}"></link>
+{% endblock %}
+
+{% block header_block %}
+   {% include 'habito_app/header.html' %}
+{% endblock %}
+
+{% block body_block %}
+   <div class="container">
+      <div class="row">
+         <div class="col">
+            {% if habits %}
+               <ul class="habit-list">
+                  <h3>Habits you are working on: </h3>
+                  {% for k,v in habits.items %}
+                     <li>
+                        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                        <a href="{% url 'habit' v.habit.slug %}">{{ v.habit.title }}</a>
+                     </li>
+                  {% endfor %}
+               </ul>
+            {% else %}
+               <strong>There are no habits present.</strong>
+            {% endif %}
+         </div>
+      </div>
+   </div>
+{% endblock %}

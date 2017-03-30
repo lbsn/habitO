@@ -5,7 +5,7 @@ from habito_app.models import Habit
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse, HttpResponseBadRequest, JsonResponse
 from django.core.urlresolvers import reverse
-from habito_app.forms import UserForm
+from habito_app.forms import LoginForm
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
@@ -13,18 +13,53 @@ from django.contrib.auth import logout
 from datetime import datetime
 import json
 
-from habito_app.forms import HabitForm
-
-
+# Home view
 def index(request):
-    habit_list = Habit.objects.order_by('title')[:5]
-    context_dict = {'habits': habit_list}
-    response = render(request, 'habito_app/index.html', context=context_dict)
-    return response
+	response = render(request, 'habito_app/index.html')
+	return response
 
+# Login view
+def user_login(request):
+	if request.method == 'POST':
+		username = request.POST['username']
+		password = request.POST['password']
+		user = authenticate(username=username, password=password)
+		if user is not None:
+			if user.is_active:
+				login(request, user)
+				return HttpResponseRedirect("/habits/")
+			else:
+				return HttpResponse("account disabled")
+		else:
+			return HttpResponse("invalid login details")
+	else:
+		login_form = LoginForm()
+		return render(request, 'habito_app/login.html',{'login_form':login_form})
+		  
+# Register view
+def register(request):
+	registered = False
+	if request.method == 'POST':
+		user_form = UserForm(data=request.POST)
+		if user_form.is_valid():
+			user = user_form.save()
+			user.set_password(user.password)
+			user.save()
+			registered = True
+			if registered == True:
+				response = render(request, 'habito_app/index.html')
+				return response
+		else:
+			print(user_form.errors)
+	else:
+		user_form = UserForm()
+		context_dict['user_form'] = user_form
+	response = render(request, 'habito_app/register.html', context_dict)
+	return response
+		  
 # Shows the list of habits for the logged in user
 @login_required
-def show_user(request):
+def habits(request):
 	user = request.user
 	if user.is_authenticated():
 		habit_list = Habit.objects.filter(user=user).order_by('created')
@@ -40,65 +75,10 @@ def show_user(request):
 			else:
 				last_day = 'off'
 			context_dict['habits'][i] = {'habit':habit, 'last_day':last_day}
-		response = render(request, 'habito_app/user.html', context=context_dict)
+		response = render(request, 'habito_app/habits.html', context=context_dict)
 	else:
 		response = HttpResponseRedirect(reverse('index'))
 	return response
-
-
-def register(request):
-
-    registered = False
-
-    if request.method == 'POST':
-
-        user_form = UserForm(data=request.POST)
-
-        if user_form.is_valid():
-            user = user_form.save()
-
-            user.set_password(user.password)
-            user.save()
-
-            registered = True
-            if registered == True:
-                response = render(request, 'habito_app/index.html')
-                return response
-
-        else:
-            print(user_form.errors)
-    else:
-        user_form = UserForm()
-        context_dict['user_form'] = user_form
-    response = render(request, 'habito_app/register.html', context_dict)
-    return response
-
-
-def user_login(request):
-    
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(username=username, password=password)
-
-        if user is not None:
-
-            if user.is_active:
-
-                login(request, user)
-                return HttpResponseRedirect("/habito_app/user.html")
-            else:
-                return HttpResponse("account disabled")
-        else:
-            return HttpResponse("invalid login details")
-    else:
-        return render(request, 'habito_app/login.html',{})
-
-
-@login_required
-def restricted(request):
-    return HttpResponse("")
 
 
 @login_required
@@ -122,11 +102,13 @@ def show_habit(request, habit_title_slug):
 		# Builds context dict
 		context_dict = {
 			'habit':habit,
+			'habit_created': habit.created, 
 			'habit_title': habit.title, 
 			'habit_slug':habit.slug, 
 			'habit_desc':habit.description, 
 			'days': habit.getDays(),
-			'achv': habit.getAchievements()
+			'achv': habit.getAchievements(),
+			'today': str(habit.getTodayIndex())
 		}        
 	except Habit.DoesNotExist:
 		context_dict = {
