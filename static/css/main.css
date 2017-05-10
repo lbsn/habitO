@@ -2,16 +2,12 @@
 @import url('https://fonts.googleapis.com/css?family=Kaushan+Script');
 @import url('https://fonts.googleapis.com/css?family=Muli');
 
-/* MEDIA QUERY */
+/* MEDIA QUERIES */
 /* xs */
 @media (max-width: 575px) {
   html {
     font-size: 14px;
   }
-  .navbar > .brand-col{
-      text-align: left;
-      padding: 0;
-   }
 }
 /* sm */
 @media (min-width: 576px) and (max-width: 767px) {
@@ -28,8 +24,8 @@
 /* lg, xl */
 @media (min-width: 992px) {
   html {
-    font-size: 22px;
-  }  
+    font-size: 20px;
+  }
 }
 
 /* GENERIC */
@@ -38,30 +34,27 @@ html{
 }
 body{
    background-color: #4DDBFF;
-   
+
 }
 
 /* HEADER */
 .navbar{
    background-color: #FFFFFF;
 }
-.brand-col{
-   text-align: center;
-}
 .brand{
    font-family: 'Kaushan Script', cursive;
    font-size: 2em;
 }
-.header-container{
-   position:relative;
+@media (min-width: 576px) {
+  .brand{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
+
 .user-info{
-   position: absolute;
-   top: 0px;
-   right: 0px;
-   height: 100%;
    font-size: 1.2em;
-   padding: 0;
 }
 .user-info button{
    display: inline-block;
@@ -69,8 +62,12 @@ body{
    color: #000000;
    height: 100%;
    padding: 0;
+   cursor: pointer;
 }
-
+.user-info .dropdown-menu{
+  background-color: rgba(44, 42, 43, 0.5);
+  font-family: 'Muli', sans-serif;
+}
 
 /* BUTTONS */
 button, input{

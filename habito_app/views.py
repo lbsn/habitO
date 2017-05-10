@@ -56,7 +56,12 @@ def register(request):
 		context_dict['user_form'] = user_form
 	response = render(request, 'habito_app/register.html', context_dict)
 	return response
-		  
+
+# Edit profile
+@login_required
+def edit_profile(request):
+	return "edit profile"
+
 # Shows the list of habits for the logged in user
 @login_required
 def habits(request):

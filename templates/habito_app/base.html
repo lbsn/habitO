@@ -9,12 +9,14 @@
 
       <!-- Latest compiled and minified CSS -->
       <link rel="stylesheet" href="{% static 'bootstrap/4.0.0-alpha.6/css/bootstrap.min.css' %}">
-      <link rel="stylesheet" href="{% static 'css/main.css' %}"></link>
       <!-- Font Awesome -->
       <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"></link>
+      <!-- Main CSS -->
+      <link rel="stylesheet" href="{% static 'css/main.css' %}"></link>
+      
       {% block css_block %}
       {% endblock %}
-      
+
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
       <!--[if lt IE 9]>
@@ -25,16 +27,24 @@
    <body>
       {% block header_block %}
       {% endblock %}
-      
+
       {% block body_block %}
-      {% endblock %}
-      
+      {% endblock body_block %}
+
       {% block footer_block %}
-      {% endblock %}
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
-      <!-- Latest compiled and minified JavaScript -->
-      <script src="{% static 'bootstrap/4.0.0-alpha.6/js/bootstrap.min.js' %}"></script>
+      {% endblock footer_block %}
+
+      {% block jquery %}
+         <!-- jQuery -->
+         <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+      {% endblock jquery %}
       
+      {% block bootstrap_jquery%}
+         <!-- Bootstrap min js -->
+         <script src="{% static 'bootstrap/4.0.0-alpha.6/js/bootstrap.min.js' %}"></script>
+      {% endblock bootstrap_jquery %}
+      
+      {% block custom_jquery %}
+      {% endblock custom_jquery %}
    </body>
 </html>

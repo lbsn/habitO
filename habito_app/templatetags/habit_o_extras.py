@@ -28,4 +28,3 @@ def days_table(context):
 			week = week + 1
 	
 	return sorted(result.items())
-			
